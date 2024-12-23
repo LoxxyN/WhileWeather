@@ -1,0 +1,32 @@
+.card {
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+	@apply bg-gradient-to-br from-[#54aac7] to-[#E4E5E6] bg-gray-300 h-80 w-56 border border-solid border-gray-400 rounded-xl p-3;
+}
+
+.cardTop {
+	@apply mt-4 flex;
+}
+
+.cardTemp {
+	@apply flex font-semibold text-2xl ml-4;
+}
+
+.cardBottom {
+	@apply mt-8;
+}
+
+.windInfo {
+	@apply flex gap-x-4;
+}
+
+.cardWind {
+	@apply flex gap-x-4;
+}
+
+.cardPressure {
+	@apply flex gap-x-4 mt-4;
+}
+
+.cardHumidity {
+	@apply flex gap-x-4 mt-4;
+}
