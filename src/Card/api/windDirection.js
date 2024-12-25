@@ -1,4 +1,4 @@
-const windDirection = degrees => {
+export const windDirection = degrees => {
 	return degrees == 0
 		? 'С'
 		: degrees >= 1 && degrees < 89
@@ -15,5 +15,3 @@ const windDirection = degrees => {
 		? 'З'
 		: degrees >= 271 && degrees < 359 > 'СЗ'
 }
-
-export default windDirection

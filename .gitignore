@@ -18,6 +18,7 @@ dist-ssr
 /node_modules
 .idea
 .env
+nedoToDo.txt
 .DS_Store
 *.suo
 *.ntvs*

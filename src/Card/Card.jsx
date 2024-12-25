@@ -1,8 +1,8 @@
 import { CircleGauge, Droplet, Wind } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import ReactLoading from 'react-loading'
-import fetchWeatherData from './api/fetchWeatherData'
-import FirstLetter from './api/firstletter'
+import { fetchWeatherData } from './api/fetchWeatherData'
+import { FirstLetter } from './api/firstletter'
 import { weatherIcons } from './api/weatherIcon.jsx'
 import { WindInfo } from './api/Wind'
 import styles from './ui/Card.module.scss'
@@ -48,48 +48,41 @@ export const Card = () => {
 		)
 	}
 
-	const description = weatherData.weather[0].description
+	const {
+		weather: [{ description }],
+		name: city,
+		main: { feels_like: feelsLike, temp, pressure, humidity },
+		wind: { speed: windSpeed, deg: windDegrees },
+	} = weatherData
+
 	const weatherDescription = FirstLetter(description)
 	const weatherIconComponent = weatherIcons(weatherDescription)
-	const weatherCity = weatherData.name
-	const weatherFeelsLike = weatherData.main.feels_like
-	const weatherTemp = weatherData.main.temp
-	const weatherWindSpeed = weatherData.wind.speed
-	const weatherPressure = weatherData.main.pressure
-	const weatherHumidity = weatherData.main.humidity
-	const weatherDegrees = weatherData.wind.deg
-
 	return (
 		<div className={styles.card}>
-			<h2 className='card-city'>{weatherCity}</h2>
-			{/* // */}
+			<h2 className='card-city'>{city}</h2>
 
 			<div className={styles.cardTop}>
 				{weatherIconComponent}
-				<div className={styles.cardTemp}>{weatherTemp}°C</div>
+				<div className={styles.cardTemp}>{temp}°C</div>
 			</div>
-
-			{/* // */}
 
 			<div className='card-middle mt-6'>
 				<div className='card-state'>{weatherDescription}</div>
-				<div className='card-comfort'>Ощущается как {weatherFeelsLike}</div>
+				<div className='card-comfort'>Ощущается как {feelsLike}</div>
 			</div>
-
-			{/* // */}
 
 			<div className={styles.cardBottom}>
 				<div className={styles.cardWind}>
 					<Wind className='ml-4' />
-					<WindInfo degrees={weatherDegrees} speed={weatherWindSpeed} />
+					<WindInfo degrees={windDegrees} speed={windSpeed} />
 				</div>
 				<div className={styles.cardPressure}>
 					<CircleGauge className='ml-4' />
-					{weatherPressure} мм рт.ст
+					{pressure} мм рт.ст
 				</div>
 				<div className={styles.cardHumidity}>
 					<Droplet className='ml-4' />
-					{weatherHumidity}%
+					{humidity}%
 				</div>
 			</div>
 		</div>
