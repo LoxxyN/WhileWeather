@@ -16,11 +16,11 @@
 }
 
 .windInfo {
-	@apply flex gap-x-4;
+	@apply flex first:gap-x-4;
 }
 
 .cardWind {
-	@apply flex gap-x-4;
+	@apply flex first:gap-x-4;
 }
 
 .cardPressure {
