@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { fetchWeatherData } from '../fetchWeatherData.js'
+import { fetchWeatherData } from '../fetchWeatherData'
 
 export const useWeatherData = () => {
 	const [weatherData, setWeatherData] = useState(null)

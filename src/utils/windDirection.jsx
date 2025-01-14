@@ -12,37 +12,37 @@ import {
 export const windDirection = degrees => {
 	return degrees == 0 ? (
 		<>
-			<ArrowUp /> С
+			<ArrowUp /> Ю
 		</>
 	) : degrees >= 1 && degrees < 89 ? (
 		<>
-			<ArrowUpRight /> СВ
+			<ArrowUpRight /> ЮЗ
 		</>
 	) : degrees == 90 ? (
 		<>
-			<ArrowRight /> В
+			<ArrowRight /> З
 		</>
 	) : degrees >= 91 && degrees < 179 ? (
 		<>
-			<ArrowDownRight /> ЮВ
+			<ArrowDownRight /> СЗ
 		</>
 	) : degrees == 180 ? (
 		<>
-			<ArrowDown /> Ю
+			<ArrowDown /> С
 		</>
 	) : degrees >= 181 && degrees < 269 ? (
 		<>
-			<ArrowDownLeft /> ЮЗ
+			<ArrowDownLeft /> СВ
 		</>
 	) : degrees == 270 ? (
 		<>
-			<ArrowLeft /> З
+			<ArrowLeft /> В
 		</>
 	) : degrees >= 271 && degrees < 359 ? (
 		<>
-			<ArrowUpLeft /> СЗ
+			<ArrowUpLeft /> ЮВ
 		</>
 	) : (
-		'С'
+		'Ю'
 	)
 }
