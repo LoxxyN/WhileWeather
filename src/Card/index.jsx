@@ -1,8 +1,8 @@
-import { FirstLetter } from '@/utils/firstletter.js'
-import { useWeatherData } from '@/utils/hooks/useWeatherData.js'
-import { weatherIcons } from '@/utils/weatherIcon.jsx'
-import { WindInfo } from '@/utils/Wind.jsx'
 import { CircleGauge, Droplet, Wind } from 'lucide-react'
+import { FirstLetter } from '../utils/firstletter.js'
+import { useWeatherData } from '../utils/hooks/useWeatherData.js'
+import { weatherIcons } from '../utils/weatherIcon.jsx'
+import { WindInfo } from '../utils/Wind.jsx'
 import styles from './ui/Card.module.scss'
 import { Preloader } from './ui/preloader.jsx'
 
