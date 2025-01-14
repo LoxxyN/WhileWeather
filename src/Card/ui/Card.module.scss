@@ -1,6 +1,26 @@
+.appThemeSunrise {
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+	@apply bg-gradient-to-br from-[#F1F2B5] to-[#135058] h-80 w-56 border border-solid border-gray-400 rounded-xl p-3;
+}
+
+.appThemeDay {
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+	@apply bg-gradient-to-t from-[#076585] to-[#eae7e7] h-80 w-56 border border-solid border-gray-400 rounded-xl p-3;
+}
+
+.appThemeSunset {
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+	@apply bg-gradient-to-bl from-[#1D2B64] to-[#F8CDDA] h-80 w-56 border border-solid border-gray-400 rounded-xl p-3;
+}
+
+.appThemeNight {
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+	@apply bg-gradient-to-b from-[#16222A] to-[#3A6073] h-80 w-56 border border-solid border-gray-400 rounded-xl p-3;
+}
+
 .card {
 	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-	@apply bg-gradient-to-br from-[#54aac7] to-[#E4E5E6] bg-gray-300 h-80 w-56 border border-solid border-gray-400 rounded-xl p-3;
+	@apply bg-gray-300 h-80 w-56 border border-solid border-gray-400 rounded-xl p-3;
 }
 
 .cardTop {

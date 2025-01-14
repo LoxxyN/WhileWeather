@@ -1,13 +1,14 @@
 import './App.css'
-import { Card } from './Card/Card.jsx'
-import styles from './Card/ui/Card.module.scss'
+import { Card } from './Card'
 
 function App() {
 	return (
 		<>
-			<Card className={styles.card} />
+			<Card />
 		</>
 	)
 }
 
 export default App
+
+// all styles for card in the module Card.module.scss

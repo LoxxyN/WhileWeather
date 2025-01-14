@@ -1,4 +1,4 @@
-import styles from '../ui/Card.module.scss'
+import styles from '../Card/ui/Card.module.scss'
 import { windDirection } from './windDirection'
 
 export const WindInfo = ({ speed, degrees }) => {

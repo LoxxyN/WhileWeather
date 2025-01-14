@@ -1,51 +1,28 @@
 import { CircleGauge, Droplet, Wind } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import ReactLoading from 'react-loading'
-import { fetchWeatherData } from './api/fetchWeatherData'
-import { FirstLetter } from './api/firstletter'
-import { weatherIcons } from './api/weatherIcon.jsx'
-import { WindInfo } from './api/Wind'
+import { FirstLetter } from '../utils/firstletter.js'
+import { useWeatherData } from '../utils/hooks/useWeatherData.js'
+import { weatherIcons } from '../utils/weatherIcon.jsx'
+import { WindInfo } from '../utils/Wind.jsx'
 import styles from './ui/Card.module.scss'
+import { Preloader } from './ui/preloader.jsx'
 
 export const Card = () => {
-	const [weatherData, setWeatherData] = useState(null)
-
-	useEffect(() => {
-		const getWeather = async () => {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(
-					async position => {
-						const { latitude, longitude } = position.coords
-						console.log('lat, lot', latitude, longitude)
-
-						const data = await fetchWeatherData(latitude, longitude)
-						setWeatherData(data)
-					},
-					error => {
-						console.error('Ошибка:', error)
-					}
-				)
-			} else {
-				console.error('Геолокация не поддерживается вашим браузером.')
-			}
-		}
-
-		getWeather()
-	}, [])
+	const weatherData = useWeatherData()
 
 	if (!weatherData) {
-		return (
-			<div className='preload'>
-				Загрузка данных ...
-				<ReactLoading
-					type='bars'
-					color='#000000'
-					height={100}
-					width={50}
-					className='ml-16'
-				/>
-			</div>
-		)
+		return <Preloader />
+	}
+
+	const getThemeClass = time => {
+		if (time == 0 && time <= 6) {
+			return styles.appThemeNight
+		} else if (time >= 7 && time <= 11) {
+			return styles.appThemeSunrise
+		} else if (time >= 12 && time <= 18) {
+			return styles.appThemeDay
+		} else if (time >= 19 && time <= 23) {
+			return styles.appThemeSunset
+		}
 	}
 
 	const {
@@ -54,11 +31,13 @@ export const Card = () => {
 		main: { feels_like: feelsLike, temp, pressure, humidity },
 		wind: { speed: windSpeed, deg: windDegrees },
 	} = weatherData
-
+	const hoursNow = new Date().getHours()
 	const weatherDescription = FirstLetter(description)
 	const weatherIconComponent = weatherIcons(weatherDescription)
+	const themeClass = getThemeClass(hoursNow)
+
 	return (
-		<div className={styles.card}>
+		<div className={`${styles.card} ${themeClass}`}>
 			<h2 className='card-city'>{city}</h2>
 
 			<div className={styles.cardTop}>
